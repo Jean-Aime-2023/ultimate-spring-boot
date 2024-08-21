@@ -12,18 +12,33 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class FirstController {
+public class StudentController {
 
     private final StudentRepository repository;
 
-    public FirstController(StudentRepository repository) {
+    public StudentController(StudentRepository repository) {
         this.repository = repository;
     }
 
     @PostMapping("/students")
     public Student post(
-            @RequestBody Student student) {
+            @RequestBody StudentDto dto) {
+        var student = toStudent(dto);
         return repository.save(student);
+    }
+
+    private Student toStudent(StudentDto dto) {
+        var student = new Student();
+        student.setFirstname(dto.firstname());
+        student.setLastname(dto.lastname());
+        student.setEmail(dto.email());
+
+        var school = new School();
+        school.setId(dto.schoolId());
+
+        student.setSchool(school);
+
+        return student;
     }
 
     @GetMapping("/students")
