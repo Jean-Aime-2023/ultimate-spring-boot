@@ -1,9 +1,15 @@
 package com.sizer.example;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,19 +25,30 @@ public class Student {
     @Column(unique = true)
     private String email;
     private int age;
-    @Column(updatable = false)
-    private String some_column;
+
+    @OneToOne(
+        mappedBy = "student",
+        cascade = CascadeType.ALL
+    )
+    private StudentProfile studentProfile;
+
+    @ManyToOne
+    @JoinColumn(
+        name = "school_id"
+    )
+    @JsonBackReference
+    private School school;
+
 
     public Student() {
     }
 
-    public Student(Integer id, String firstname, String lastname, String email, int age, String some_column) {
+    public Student(Integer id, String firstname, String lastname, String email, int age) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.age = age;
-        this.some_column = some_column;
     }
 
     public Integer getId() {
@@ -74,11 +91,19 @@ public class Student {
         this.age = age;
     }
 
-    public String getSome_column() {
-        return some_column;
+    public StudentProfile getStudentProfile() {
+        return studentProfile;
     }
 
-    public void setSome_column(String some_column) {
-        this.some_column = some_column;
+    public void setStudentProfile(StudentProfile studentProfile) {
+        this.studentProfile = studentProfile;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 }

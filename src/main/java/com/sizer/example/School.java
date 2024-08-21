@@ -1,0 +1,62 @@
+package com.sizer.example;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+public class School {
+
+
+    // 4 : 33 : 51 : Start of Relationships
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+    private String name;
+
+    @OneToMany(
+        mappedBy = "school"
+    )
+    @JsonManagedReference
+    private List<Student> students;
+
+
+    public School() {
+    }
+
+    public School(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+}
