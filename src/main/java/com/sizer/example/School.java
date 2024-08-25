@@ -12,9 +12,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class School {
 
-
-    // 4 : 33 : 51 : Start of Relationships
-
     @Id
     @GeneratedValue
     private Integer id;
@@ -30,8 +27,7 @@ public class School {
     public School() {
     }
 
-    public School(Integer id, String name) {
-        this.id = id;
+    public School(String name) {
         this.name = name;
     }
 

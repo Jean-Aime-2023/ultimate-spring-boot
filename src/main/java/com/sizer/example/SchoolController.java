@@ -1,6 +1,7 @@
 package com.sizer.example;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,14 +17,26 @@ public class SchoolController {
         this.schoolRepository  = schoolRepository;
     }
 
+    private School toSchool(SchoolDto dto){
+        return new School(dto.name());
+    }
+
     @PostMapping("/school")
-    public School createSchool(@RequestBody School school){
-        return schoolRepository.save(school);
+    public SchoolDto createSchool(@RequestBody SchoolDto dto){
+        var school = toSchool(dto);
+        schoolRepository.save(school); 
+        return dto;
     }
-    
+
+    private SchoolDto toSchoolDto(School school){
+        return new SchoolDto(school.getName());
+    }
+
     @GetMapping("/school")
-    public List<School> getSchools(){
-        return schoolRepository.findAll();
+    public List<SchoolDto> getSchools(){
+        return schoolRepository.findAll()
+               .stream()
+               .map(this::toSchoolDto)
+               .collect(Collectors.toList());
     }
-    
 }
