@@ -1,4 +1,4 @@
-package com.sizer.example;
+package com.sizer.example.school;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import jakarta.persistence.OneToMany;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.sizer.example.student.Student;
 
 @Entity
 public class School {

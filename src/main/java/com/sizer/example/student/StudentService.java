@@ -1,8 +1,6 @@
-package com.sizer.example;
+package com.sizer.example.student;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.*;
 import java.util.stream.Collectors;
 

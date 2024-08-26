@@ -1,6 +1,8 @@
-package com.sizer.example;
+package com.sizer.example.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sizer.example.school.School;
+import com.sizer.example.studentprofile.StudentProfile;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

@@ -1,4 +1,4 @@
-package com.sizer.example;
+package com.sizer.example.school;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;

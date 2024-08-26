@@ -1,4 +1,4 @@
-package com.sizer.example;
+package com.sizer.example.school;
 
 public record SchoolDto(String name) {}
 

@@ -1,4 +1,4 @@
-package com.sizer.example;
+package com.sizer.example.student;
 
 public record StudentResponseDto(
     String firstname,

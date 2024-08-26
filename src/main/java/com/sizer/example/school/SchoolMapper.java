@@ -1,4 +1,4 @@
-package com.sizer.example;
+package com.sizer.example.school;
 
 import org.springframework.stereotype.Service;
 

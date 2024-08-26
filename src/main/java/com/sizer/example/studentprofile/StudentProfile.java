@@ -1,4 +1,6 @@
-package com.sizer.example;
+package com.sizer.example.studentprofile;
+
+import com.sizer.example.student.Student;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
